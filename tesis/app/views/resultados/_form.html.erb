@@ -1,0 +1,37 @@
+<%= form_for(resultado) do |f| %>
+  <% if resultado.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(resultado.errors.count, "error") %> prohibited this resultado from being saved:</h2>
+
+      <ul>
+      <% resultado.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :resultado_id %>
+    <%= f.number_field :resultado_id %>
+  </div>
+
+  <div class="field">
+    <%= f.label :puntaje_max %>
+    <%= f.number_field :puntaje_max %>
+  </div>
+
+  <div class="field">
+    <%= f.label :punteje_obtenido %>
+    <%= f.text_field :punteje_obtenido %>
+  </div>
+
+  <div class="field">
+    <%= f.label :integer %>
+    <%= f.text_field :integer %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

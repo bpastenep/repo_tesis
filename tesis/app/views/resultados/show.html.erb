@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Resultado:</strong>
+  <%= @resultado.resultado_id %>
+</p>
+
+<p>
+  <strong>Puntaje max:</strong>
+  <%= @resultado.puntaje_max %>
+</p>
+
+<p>
+  <strong>Punteje obtenido:</strong>
+  <%= @resultado.punteje_obtenido %>
+</p>
+
+<p>
+  <strong>Integer:</strong>
+  <%= @resultado.integer %>
+</p>
+
+<%= link_to 'Edit', edit_resultado_path(@resultado) %> |
+<%= link_to 'Back', resultados_path %>

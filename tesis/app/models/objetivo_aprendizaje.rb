@@ -1,0 +1,2 @@
+class ObjetivoAprendizaje < ApplicationRecord
+end

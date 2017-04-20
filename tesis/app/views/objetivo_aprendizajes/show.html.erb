@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Objetivo aprendizaje:</strong>
+  <%= @objetivo_aprendizaje.objetivo_aprendizaje_id %>
+</p>
+
+<p>
+  <strong>Descripcion oa:</strong>
+  <%= @objetivo_aprendizaje.descripcion_oa %>
+</p>
+
+<p>
+  <strong>Topico:</strong>
+  <%= @objetivo_aprendizaje.topico %>
+</p>
+
+<%= link_to 'Edit', edit_objetivo_aprendizaje_path(@objetivo_aprendizaje) %> |
+<%= link_to 'Back', objetivo_aprendizajes_path %>

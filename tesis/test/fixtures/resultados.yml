@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  resultado_id: 1
+  puntaje_max: 1
+  punteje_obtenido: MyString
+  integer: MyString
+
+two:
+  resultado_id: 1
+  puntaje_max: 1
+  punteje_obtenido: MyString
+  integer: MyString
