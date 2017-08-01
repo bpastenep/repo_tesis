@@ -1,0 +1,33 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  carrera: MyString
+  nombre: MyString
+  codigo: 1
+  requisitos: MyText
+  dicta: 
+  ano_sem_vil: 
+  categora: MyString
+  horas_presen: 1
+  TEL: 1
+  perfil_prof: MyText
+  version: MyString
+  resolucion: MyString
+  autor_es: MyString
+  descripcion: MyText
+
+two:
+  carrera: MyString
+  nombre: MyString
+  codigo: 1
+  requisitos: MyText
+  dicta: 
+  ano_sem_vil: 
+  categora: MyString
+  horas_presen: 1
+  TEL: 1
+  perfil_prof: MyText
+  version: MyString
+  resolucion: MyString
+  autor_es: MyString
+  descripcion: MyText

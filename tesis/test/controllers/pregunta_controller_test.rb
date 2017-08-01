@@ -17,7 +17,7 @@ class PreguntaControllerTest < ActionDispatch::IntegrationTest
 
   test "should create preguntum" do
     assert_difference('Preguntum.count') do
-      post pregunta_url, params: { preguntum: { contenido: @preguntum.contenido, pregunta_id: @preguntum.pregunta_id } }
+      post pregunta_url, params: { preguntum: { id_imagen: @preguntum.id_imagen, pregunta_realizar: @preguntum.pregunta_realizar, respuesta: @preguntum.respuesta, tipo_pregunta: @preguntum.tipo_pregunta } }
     end
 
     assert_redirected_to preguntum_url(Preguntum.last)
@@ -34,7 +34,7 @@ class PreguntaControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update preguntum" do
-    patch preguntum_url(@preguntum), params: { preguntum: { contenido: @preguntum.contenido, pregunta_id: @preguntum.pregunta_id } }
+    patch preguntum_url(@preguntum), params: { preguntum: { id_imagen: @preguntum.id_imagen, pregunta_realizar: @preguntum.pregunta_realizar, respuesta: @preguntum.respuesta, tipo_pregunta: @preguntum.tipo_pregunta } }
     assert_redirected_to preguntum_url(@preguntum)
   end
 

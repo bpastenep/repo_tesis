@@ -1,0 +1,27 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Resultados De Aprendizajes</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Descripcion resultado</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @resultados_de_aprendizajes.each do |resultados_de_aprendizaje| %>
+      <tr>
+        <td><%= resultados_de_aprendizaje.descripcion_resultado %></td>
+        <td><%= link_to 'Show', resultados_de_aprendizaje %></td>
+        <td><%= link_to 'Edit', edit_resultados_de_aprendizaje_path(resultados_de_aprendizaje) %></td>
+        <td><%= link_to 'Destroy', resultados_de_aprendizaje, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Resultados De Aprendizaje', new_resultados_de_aprendizaje_path %>

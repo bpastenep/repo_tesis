@@ -1,9 +1,13 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  pregunta_id: 1
-  contenido: MyString
+  pregunta_realizar: MyText
+  tipo_pregunta: 1
+  respuesta: MyText
+  id_imagen: 1
 
 two:
-  pregunta_id: 1
-  contenido: MyString
+  pregunta_realizar: MyText
+  tipo_pregunta: 1
+  respuesta: MyText
+  id_imagen: 1

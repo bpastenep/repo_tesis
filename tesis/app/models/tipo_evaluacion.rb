@@ -1,2 +1,0 @@
-class TipoEvaluacion < ApplicationRecord
-end

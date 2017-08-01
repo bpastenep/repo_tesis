@@ -1,13 +1,23 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Pregunta:</strong>
-  <%= @preguntum.pregunta_id %>
+  <strong>Pregunta realizar:</strong>
+  <%= @preguntum.pregunta_realizar %>
 </p>
 
 <p>
-  <strong>Contenido:</strong>
-  <%= @preguntum.contenido %>
+  <strong>Tipo pregunta:</strong>
+  <%= @preguntum.tipo_pregunta %>
+</p>
+
+<p>
+  <strong>Respuesta:</strong>
+  <%= @preguntum.respuesta %>
+</p>
+
+<p>
+  <strong>Id imagen:</strong>
+  <%= @preguntum.id_imagen %>
 </p>
 
 <%= link_to 'Edit', edit_preguntum_path(@preguntum) %> |

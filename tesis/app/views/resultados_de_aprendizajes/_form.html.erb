@@ -1,0 +1,22 @@
+<%= form_for(resultados_de_aprendizaje) do |f| %>
+  <% if resultados_de_aprendizaje.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(resultados_de_aprendizaje.errors.count, "error") %> prohibited this resultados_de_aprendizaje from being saved:</h2>
+
+      <ul>
+      <% resultados_de_aprendizaje.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :descripcion_resultado %>
+    <%= f.text_area :descripcion_resultado %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

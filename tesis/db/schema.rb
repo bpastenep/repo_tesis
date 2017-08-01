@@ -10,93 +10,51 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170420013823) do
+ActiveRecord::Schema.define(version: 20170614003800) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "Clases_Evaluacions", id: false, force: :cascade do |t|
-    t.integer "clase_id",      null: false
-    t.integer "evaluacion_id", null: false
+  create_table "planificacions", force: :cascade do |t|
+    t.date     "fecha_inicio"
+    t.date     "fecha_termino"
+    t.integer  "cantidad_clases"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
   end
 
-  create_table "Clases_Usuarios", id: false, force: :cascade do |t|
-    t.integer "usuario_id", null: false
-    t.integer "clase_id",   null: false
-  end
-
-  create_table "Contenidos_Tipo_Evaluacions", id: false, force: :cascade do |t|
-    t.integer "contenido_id",       null: false
-    t.integer "tipo_evaluacion_id", null: false
-  end
-
-  create_table "clases", force: :cascade do |t|
-    t.integer  "clase_id"
-    t.string   "nombre_clase"
-    t.text     "descripcion_clase"
+  create_table "pregunta", force: :cascade do |t|
+    t.text     "pregunta_realizar"
+    t.integer  "tipo_pregunta"
+    t.text     "respuesta"
+    t.integer  "id_imagen"
     t.datetime "created_at",        null: false
     t.datetime "updated_at",        null: false
   end
 
-  create_table "contenidos", force: :cascade do |t|
-    t.integer  "contenido_id"
-    t.text     "descripcion_contenido"
+  create_table "programas", force: :cascade do |t|
+    t.string   "carrera"
+    t.string   "nombre"
+    t.integer  "codigo"
+    t.text     "requisitos"
+    t.string   "dicta"
+    t.string   "ano_sem_vil"
+    t.string   "categora"
+    t.integer  "horas_presen"
+    t.integer  "TEL"
+    t.text     "perfil_prof"
+    t.string   "version"
+    t.string   "resolucion"
+    t.string   "autor_es"
+    t.text     "descripcion"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
+  create_table "resultados_de_aprendizajes", force: :cascade do |t|
+    t.text     "descripcion_resultado"
     t.datetime "created_at",            null: false
     t.datetime "updated_at",            null: false
-    t.integer  "evaluacion_id"
-  end
-
-  create_table "evaluacions", force: :cascade do |t|
-    t.integer  "id_evaluacion"
-    t.date     "fecha"
-    t.time     "hora"
-    t.boolean  "repetir"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
-  end
-
-  create_table "objetivo_aprendizajes", force: :cascade do |t|
-    t.integer  "objetivo_aprendizaje_id"
-    t.text     "descripcion_oa"
-    t.text     "topico"
-    t.datetime "created_at",              null: false
-    t.datetime "updated_at",              null: false
-    t.integer  "evaluacion_id"
-  end
-
-  create_table "pregunta", force: :cascade do |t|
-    t.integer  "pregunta_id"
-    t.string   "contenido"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-  end
-
-  create_table "resultados", force: :cascade do |t|
-    t.integer  "resultado_id"
-    t.integer  "puntaje_max"
-    t.string   "punteje_obtenido"
-    t.string   "integer"
-    t.datetime "created_at",              null: false
-    t.datetime "updated_at",              null: false
-    t.integer  "objetivo_aprendizaje_id"
-    t.integer  "evaluacion_id"
-  end
-
-  create_table "tipo_evaluacions", force: :cascade do |t|
-    t.integer  "evaluacion_id"
-    t.text     "descripcion_tipo_evaluacion"
-    t.datetime "created_at",                  null: false
-    t.datetime "updated_at",                  null: false
-  end
-
-  create_table "usuarios", force: :cascade do |t|
-    t.integer  "user_id"
-    t.integer  "rol"
-    t.string   "nombre"
-    t.string   "rut"
-    t.text     "mail"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
 end

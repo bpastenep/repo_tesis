@@ -1,9 +1,0 @@
-# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
-
-one:
-  tipo_evaluacion_id: 1
-  descripcion_tipo_evaluacion: MyString
-
-two:
-  tipo_evaluacion_id: 1
-  descripcion_tipo_evaluacion: MyString

@@ -1,0 +1,2 @@
+class ResultadosDeAprendizaje < ApplicationRecord
+end
