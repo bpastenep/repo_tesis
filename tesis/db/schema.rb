@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170614003800) do
+ActiveRecord::Schema.define(version: 20171018014511) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,11 +21,13 @@ ActiveRecord::Schema.define(version: 20170614003800) do
     t.integer  "cantidad_clases"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
+    t.integer  "programa_id"
+    t.index ["programa_id"], name: "index_planificacions_on_programa_id", using: :btree
   end
 
   create_table "pregunta", force: :cascade do |t|
     t.text     "pregunta_realizar"
-    t.integer  "tipo_pregunta"
+    t.string   "tipo_pregunta"
     t.text     "respuesta"
     t.integer  "id_imagen"
     t.datetime "created_at",        null: false
@@ -39,7 +41,7 @@ ActiveRecord::Schema.define(version: 20170614003800) do
     t.text     "requisitos"
     t.string   "dicta"
     t.string   "ano_sem_vil"
-    t.string   "categora"
+    t.string   "categoria"
     t.integer  "horas_presen"
     t.integer  "TEL"
     t.text     "perfil_prof"
@@ -51,10 +53,17 @@ ActiveRecord::Schema.define(version: 20170614003800) do
     t.datetime "updated_at",   null: false
   end
 
+  create_table "programs_resultados_de_aprendizajes", id: false, force: :cascade do |t|
+    t.integer "program_id",                   null: false
+    t.integer "resultados_de_aprendizaje_id", null: false
+  end
+
   create_table "resultados_de_aprendizajes", force: :cascade do |t|
     t.text     "descripcion_resultado"
     t.datetime "created_at",            null: false
     t.datetime "updated_at",            null: false
+    t.integer  "planificaciones_id"
+    t.index ["planificaciones_id"], name: "index_resultados_de_aprendizajes_on_planificaciones_id", using: :btree
   end
 
 end

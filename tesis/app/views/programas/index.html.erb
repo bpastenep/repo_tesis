@@ -2,8 +2,8 @@
 
 <h1>Programas</h1>
 
-<table>
-  <thead>
+<table class="table" >
+  <thead class="thead-inverse">
     <tr>
       <th>Carrera</th>
       <th>Nombre</th>
@@ -32,7 +32,7 @@
         <td><%= programa.requisitos %></td>
         <td><%= programa.dicta %></td>
         <td><%= programa.ano_sem_vil %></td>
-        <td><%= programa.categora %></td>
+        <td><%= programa.categoria %></td>
         <td><%= programa.horas_presen %></td>
         <td><%= programa.TEL %></td>
         <td><%= programa.perfil_prof %></td>
@@ -40,9 +40,9 @@
         <td><%= programa.resolucion %></td>
         <td><%= programa.autor_es %></td>
         <td><%= programa.descripcion %></td>
-        <td><%= link_to 'Show', programa %></td>
-        <td><%= link_to 'Edit', edit_programa_path(programa) %></td>
-        <td><%= link_to 'Destroy', programa, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Mostrar', programa %></td>
+        <td><%= link_to 'Editar', edit_programa_path(programa) %></td>
+        <td><%= link_to 'Eliminar', programa, method: :delete, data: { confirm: 'Está seguro que desea eliminar el programa indicado?' } %></td>
       </tr>
     <% end %>
   </tbody>

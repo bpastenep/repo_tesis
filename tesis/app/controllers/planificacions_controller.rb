@@ -28,7 +28,7 @@ class PlanificacionsController < ApplicationController
 
     respond_to do |format|
       if @planificacion.save
-        format.html { redirect_to @planificacion, notice: 'Planificacion was successfully created.' }
+        format.html { redirect_to @planificacion, notice: 'La planificacion fue creada con éxito' }
         format.json { render :show, status: :created, location: @planificacion }
       else
         format.html { render :new }
@@ -42,7 +42,7 @@ class PlanificacionsController < ApplicationController
   def update
     respond_to do |format|
       if @planificacion.update(planificacion_params)
-        format.html { redirect_to @planificacion, notice: 'Planificacion was successfully updated.' }
+        format.html { redirect_to @planificacion, notice: 'La planificacion fue modificada con éxito' }
         format.json { render :show, status: :ok, location: @planificacion }
       else
         format.html { render :edit }
@@ -56,7 +56,7 @@ class PlanificacionsController < ApplicationController
   def destroy
     @planificacion.destroy
     respond_to do |format|
-      format.html { redirect_to planificacions_url, notice: 'Planificacion was successfully destroyed.' }
+      format.html { redirect_to planificacions_url, notice: 'La planificación fue correctamente eliminada' }
       format.json { head :no_content }
     end
   end

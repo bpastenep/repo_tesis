@@ -26,6 +26,12 @@
     <%= f.number_field :cantidad_clases %>
   </div>
 
+  <div class="field">
+    <%= f.label :programa_id %>
+    <%= f.select :programa_id, options_from_collection_for_select(Programa.all, :id, :nombre) %>
+
+  </div>
+
   <div class="actions">
     <%= f.submit %>
   </div>
