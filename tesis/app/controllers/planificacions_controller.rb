@@ -69,6 +69,6 @@ class PlanificacionsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def planificacion_params
-      params.require(:planificacion).permit(:fecha_inicio, :fecha_termino, :cantidad_clases)
+      params.require(:planificacion).permit(:fecha_inicio, :fecha_termino, :cantidad_clases, :programa_id)
     end
 end

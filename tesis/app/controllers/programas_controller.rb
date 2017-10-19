@@ -15,6 +15,7 @@ class ProgramasController < ApplicationController
   # GET /programas/new
   def new
     @programa = Programa.new
+    @rda = ResultadosDeAprendizaje.all
   end
 
   # GET /programas/1/edit
@@ -25,10 +26,10 @@ class ProgramasController < ApplicationController
   # POST /programas.json
   def create
     @programa = Programa.new(programa_params)
-
+    @programa.rda = params[:rdas]
     respond_to do |format|
       if @programa.save
-        format.html { redirect_to @programa, notice: 'Programa was successfully created.' }
+        format.html { redirect_to @programa, notice: 'Programa fue existosamente creado.' }
         format.json { render :show, status: :created, location: @programa }
       else
         format.html { render :new }
@@ -42,7 +43,7 @@ class ProgramasController < ApplicationController
   def update
     respond_to do |format|
       if @programa.update(programa_params)
-        format.html { redirect_to @programa, notice: 'Programa was successfully updated.' }
+        format.html { redirect_to @programa, notice: 'Programa fue exitosamente actualizado' }
         format.json { render :show, status: :ok, location: @programa }
       else
         format.html { render :edit }
@@ -56,7 +57,7 @@ class ProgramasController < ApplicationController
   def destroy
     @programa.destroy
     respond_to do |format|
-      format.html { redirect_to programas_url, notice: 'Programa was successfully destroyed.' }
+      format.html { redirect_to programas_url, notice: 'Programa fue exitosamente eliminado' }
       format.json { head :no_content }
     end
   end
@@ -69,6 +70,6 @@ class ProgramasController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def programa_params
-      params.require(:programa).permit(:carrera, :nombre, :codigo, :requisitos, :dicta, :ano_sem_vil, :categora, :horas_presen, :TEL, :perfil_prof, :version, :resolucion, :autor_es, :descripcion)
+      params.require(:programa).permit(:carrera, :nombre, :codigo, :requisitos, :dicta, :ano_sem_vil, :categoria, :horas_presen, :TEL, :perfil_prof, :version, :resolucion, :autor_es, :descripcion, :rda)
     end
 end

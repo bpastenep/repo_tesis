@@ -86,6 +86,12 @@
     <%= f.number_field :codigo %>
   </div>
 
+  <div class="field">
+    <%= f.label :rda_id %>
+    <% @rda.each do |rda| %>
+      <div class="field">
+        <%= check_box_tag "rdas[]", rda.id %> <%= rda.descripcion_resultado %>
+    <%end%>
 
   <div class="actions">
     <%= f.submit %>

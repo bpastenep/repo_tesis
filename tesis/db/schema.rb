@@ -10,10 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171018014511) do
+ActiveRecord::Schema.define(version: 20171019195551) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "had_rdas", force: :cascade do |t|
+    t.integer  "resultados_de_aprendizaje_id"
+    t.integer  "programa_id"
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
+    t.index ["programa_id"], name: "index_had_rdas_on_programa_id", using: :btree
+    t.index ["resultados_de_aprendizaje_id"], name: "index_had_rdas_on_resultados_de_aprendizaje_id", using: :btree
+  end
 
   create_table "planificacions", force: :cascade do |t|
     t.date     "fecha_inicio"
@@ -53,11 +62,6 @@ ActiveRecord::Schema.define(version: 20171018014511) do
     t.datetime "updated_at",   null: false
   end
 
-  create_table "programs_resultados_de_aprendizajes", id: false, force: :cascade do |t|
-    t.integer "program_id",                   null: false
-    t.integer "resultados_de_aprendizaje_id", null: false
-  end
-
   create_table "resultados_de_aprendizajes", force: :cascade do |t|
     t.text     "descripcion_resultado"
     t.datetime "created_at",            null: false
@@ -66,4 +70,6 @@ ActiveRecord::Schema.define(version: 20171018014511) do
     t.index ["planificaciones_id"], name: "index_resultados_de_aprendizajes_on_planificaciones_id", using: :btree
   end
 
+  add_foreign_key "had_rdas", "programas"
+  add_foreign_key "had_rdas", "resultados_de_aprendizajes"
 end
