@@ -15,7 +15,6 @@ class ProgramasController < ApplicationController
   # GET /programas/new
   def new
     @programa = Programa.new
-
     @unidades = Unity.all
   end
 
@@ -23,6 +22,31 @@ class ProgramasController < ApplicationController
   def new_unity
     @unidades = Unity.all
     @rda = ResultadosDeAprendizaje.all
+  end
+
+  #Funcion Insertar una nueva unidad  (Unity)
+
+  def create_unity
+    puts  params
+    nombre = params[:nombre]
+    descripcion = params[:descripcion]
+    @id_rda = params[:rdas]
+    insercion1 = Unity.create(descripcion: descripcion, nombre: nombre, id_rda: @id_rda.join(" "))
+    puts insercion1 
+    redirect_to action: 'new'
+
+    #@unidad = Unity.new(params[:descripcion],)
+  #Validaciones respecto a los parametros de unidad 
+#    if params[:descripcion].nil?
+#      puts "Entre a que la descripcion esta vacia"
+#      flash[:notice] = "Debe ingresar una descripcion"
+#      redirect_to action: :new_unity
+ #   end
+#    if params[:nombre].nil?
+#      puts "Entre a el nombre vacio "
+#      flash[:notice] = "Debe ingresar un nombre"
+#      redirect_to action: :new_unity
+  #  end
   end
 
   # GET /programas/1/edit

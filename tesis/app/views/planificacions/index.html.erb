@@ -32,7 +32,7 @@
         <td><%= planificacion.programa_id %></td>
         <td><%= link_to 'Ver', planificacion %></td>
         <td><%= link_to 'Editar', edit_planificacion_path(planificacion) %></td>
-        <td><%= link_to 'Elimnar', planificacion, method: :delete, data: { confirm: 'Está seguro que desea eliminar la planificación?' } %></td>
+        <td><%= link_to 'Eliminar', planificacion, method: :delete, data: { confirm: 'Está seguro que desea eliminar la planificación?' } %></td>
       </tr>
     <% end %>
   </tbody>

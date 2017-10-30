@@ -1,21 +1,24 @@
 <h4> Agregar una unidad </h4>
-<%= form_for :unity do |f| %>
+<%= form_tag(controller: "programas", action: "create_unity", method: "post") do  %> 
 
   <div class="field">
-    <%= f.label :descripcion %>
-    <%= f.text_field :descripcion %>
+    <p>Descripcion </p>
+    <%= text_field_tag :descripcion %>
   </div>
 
    <div class="field">
-    <%= f.label :nombre %>
-    <%= f.text_field :nombre %>
+    <p> Nombre </p>
+    <%= text_field_tag :nombre %>
   </div>
 
   <div class="field">
-    <%= f.label :rda_id %>
+    <p> RDA(s) </p>
     <% @rda.each do |rda| %>
       <div class="field">
         <%= check_box_tag "rdas[]", rda.id %> <%= rda.descripcion_resultado %>
 	<%end%>
+<br>
+ <%= submit_tag "Crear Unidad"%>
+
 <%end%>
 

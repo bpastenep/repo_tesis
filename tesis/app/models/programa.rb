@@ -13,6 +13,10 @@ class Programa < ApplicationRecord
 		@rda = value
 	end
 
+	def unidad=(value)
+		@unidad = value
+		
+
 	#Creación en la tabla Had_rda del id del programa y el id del resultado de aprendizaje
 	def set_has_rda
 		@rda.each do |rda_id|
