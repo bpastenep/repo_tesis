@@ -15,11 +15,19 @@ class ProgramasController < ApplicationController
   # GET /programas/new
   def new
     @programa = Programa.new
+
+    @unidades = Unity.all
+  end
+
+  # GET /programas/new_unity
+  def new_unity
+    @unidades = Unity.all
     @rda = ResultadosDeAprendizaje.all
   end
 
   # GET /programas/1/edit
   def edit
+    @rda = ResultadosDeAprendizaje.all
   end
 
   # POST /programas
@@ -55,6 +63,7 @@ class ProgramasController < ApplicationController
   # DELETE /programas/1
   # DELETE /programas/1.json
   def destroy
+    HadRda.destroy_all(programa_id: params[:id])
     @programa.destroy
     respond_to do |format|
       format.html { redirect_to programas_url, notice: 'Programa fue exitosamente eliminado' }
@@ -70,6 +79,6 @@ class ProgramasController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def programa_params
-      params.require(:programa).permit(:carrera, :nombre, :codigo, :requisitos, :dicta, :ano_sem_vil, :categoria, :horas_presen, :TEL, :perfil_prof, :version, :resolucion, :autor_es, :descripcion, :rda)
+      params.require(:programa).permit(:nombre,:version)
     end
 end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171019195551) do
+ActiveRecord::Schema.define(version: 20171030135051) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,12 +24,18 @@ ActiveRecord::Schema.define(version: 20171019195551) do
     t.index ["resultados_de_aprendizaje_id"], name: "index_had_rdas_on_resultados_de_aprendizaje_id", using: :btree
   end
 
+  create_table "has_unities", force: :cascade do |t|
+    t.integer  "planificacions_id"
+    t.integer  "unities_id"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+    t.index ["planificacions_id"], name: "index_has_unities_on_planificacions_id", using: :btree
+    t.index ["unities_id"], name: "index_has_unities_on_unities_id", using: :btree
+  end
+
   create_table "planificacions", force: :cascade do |t|
-    t.date     "fecha_inicio"
-    t.date     "fecha_termino"
-    t.integer  "cantidad_clases"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
     t.integer  "programa_id"
     t.index ["programa_id"], name: "index_planificacions_on_programa_id", using: :btree
   end
@@ -41,25 +47,18 @@ ActiveRecord::Schema.define(version: 20171019195551) do
     t.integer  "id_imagen"
     t.datetime "created_at",        null: false
     t.datetime "updated_at",        null: false
+    t.integer  "programa_id"
+    t.text     "respuesta_1"
+    t.text     "respuesta_2"
+    t.text     "respuesta_3"
+    t.index ["programa_id"], name: "index_pregunta_on_programa_id", using: :btree
   end
 
   create_table "programas", force: :cascade do |t|
-    t.string   "carrera"
     t.string   "nombre"
-    t.integer  "codigo"
-    t.text     "requisitos"
-    t.string   "dicta"
-    t.string   "ano_sem_vil"
-    t.string   "categoria"
-    t.integer  "horas_presen"
-    t.integer  "TEL"
-    t.text     "perfil_prof"
     t.string   "version"
-    t.string   "resolucion"
-    t.string   "autor_es"
-    t.text     "descripcion"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "resultados_de_aprendizajes", force: :cascade do |t|
@@ -70,6 +69,17 @@ ActiveRecord::Schema.define(version: 20171019195551) do
     t.index ["planificaciones_id"], name: "index_resultados_de_aprendizajes_on_planificaciones_id", using: :btree
   end
 
+  create_table "unities", force: :cascade do |t|
+    t.text     "descripcion"
+    t.string   "id_rda"
+    t.string   "nombre"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
   add_foreign_key "had_rdas", "programas"
   add_foreign_key "had_rdas", "resultados_de_aprendizajes"
+  add_foreign_key "has_unities", "planificacions", column: "planificacions_id"
+  add_foreign_key "has_unities", "unities", column: "unities_id"
+  add_foreign_key "pregunta", "programas"
 end

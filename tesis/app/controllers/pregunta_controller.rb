@@ -26,9 +26,13 @@ class PreguntaController < ApplicationController
   def create
     @preguntum = Preguntum.new(preguntum_params)
 
+    require 'pp'
+    puts "print del preguntum:"
+    pp @preguntum
+
     respond_to do |format|
       if @preguntum.save
-        format.html { redirect_to @preguntum, notice: 'Preguntum was successfully created.' }
+        format.html { redirect_to @preguntum, notice: 'Pregunta fue exitosamente creada' }
         format.json { render :show, status: :created, location: @preguntum }
       else
         format.html { render :new }
@@ -42,7 +46,7 @@ class PreguntaController < ApplicationController
   def update
     respond_to do |format|
       if @preguntum.update(preguntum_params)
-        format.html { redirect_to @preguntum, notice: 'Preguntum was successfully updated.' }
+        format.html { redirect_to @preguntum, notice: 'Pregunta fue exitosamente actualizada' }
         format.json { render :show, status: :ok, location: @preguntum }
       else
         format.html { render :edit }
@@ -56,7 +60,7 @@ class PreguntaController < ApplicationController
   def destroy
     @preguntum.destroy
     respond_to do |format|
-      format.html { redirect_to pregunta_url, notice: 'Preguntum was successfully destroyed.' }
+      format.html { redirect_to pregunta_url, notice: 'Pregunta fue exitosamente eliminada' }
       format.json { head :no_content }
     end
   end
@@ -69,6 +73,6 @@ class PreguntaController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def preguntum_params
-      params.require(:preguntum).permit(:pregunta_realizar, :tipo_pregunta, :respuesta, :id_imagen)
+      params.require(:preguntum).permit(:pregunta_realizar, :tipo_pregunta, :respuesta, :respuesta_1, :respuesta_2,:respuesta_3,:id_imagen,   :programa_id)
     end
 end

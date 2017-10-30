@@ -11,10 +11,6 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :carrera %>
-    <%= f.text_field :carrera %>
-  </div>
 
   <div class="field">
     <%= f.label :nombre %>
@@ -22,77 +18,12 @@
   </div>
 
   <div class="field">
-    <%= f.label :codigo %>
-    <%= f.number_field :codigo %>
-  </div>
-
-  <div class="field">
-    <%= f.label :requisitos %>
-    <%= f.text_area :requisitos %>
-  </div>
-
-  <div class="field">
-    <%= f.label :dicta %>
-    <%= f.text_field :dicta %>
-  </div>
-
-  <div class="field">
-    <%= f.label :ano_sem_vil %>
-    <%= f.text_field :ano_sem_vil %>
-  </div>
-
-  <div class="field">
-    <%= f.label :categoria %>
-    <%= f.text_field :categoria %>
-  </div>
-
-  <div class="field">
-    <%= f.label :horas_presen %>
-    <%= f.number_field :horas_presen %>
-  </div>
-
-  <div class="field">
-    <%= f.label :TEL %>
-    <%= f.number_field :TEL %>
-  </div>
-
-  <div class="field">
-    <%= f.label :perfil_prof %>
-    <%= f.text_area :perfil_prof %>
-  </div>
-
-  <div class="field">
     <%= f.label :version %>
     <%= f.text_field :version %>
   </div>
+ 
 
-  <div class="field">
-    <%= f.label :resolucion %>
-    <%= f.text_field :resolucion %>
-  </div>
-
-  <div class="field">
-    <%= f.label :autor_es %>
-    <%= f.text_field :autor_es %>
-  </div>
-
-  <div class="field">
-    <%= f.label :descripcion %>
-    <%= f.text_area :descripcion %>
-  </div>
-
-  <div class="field">
-    <%= f.label :codigo %>
-    <%= f.number_field :codigo %>
-  </div>
-
-  <div class="field">
-    <%= f.label :rda_id %>
-    <% @rda.each do |rda| %>
-      <div class="field">
-        <%= check_box_tag "rdas[]", rda.id %> <%= rda.descripcion_resultado %>
-    <%end%>
-
+</div>
   <div class="actions">
     <%= f.submit %>
   </div>

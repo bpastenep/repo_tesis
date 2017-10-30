@@ -1,24 +1,24 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Programas</h1>
+<br>
 
-<table class="table" >
-  <thead class="thead-inverse">
+<div class="row">
+   <div class="col-lg-12">
+      <!-- Example Bar Chart Card-->
+      <div class="card mb-3">
+         <div class="card-header">
+            <i class="fa fa-graduation-cap"></i> Programa
+         </div>
+         <div class="card-body">
+            <div class="row">
+               <div class="col-sm-12 my-auto">
+                  <table class="table" >
+  <thead>
     <tr>
-      <th>Carrera</th>
       <th>Nombre</th>
-      <th>Codigo</th>
-      <th>Requisitos</th>
-      <th>Dicta</th>
-      <th>Ano sem vil</th>
-      <th>Categora</th>
-      <th>Horas presen</th>
-      <th>Tel</th>
-      <th>Perfil prof</th>
       <th>Version</th>
-      <th>Resolucion</th>
-      <th>Autor es</th>
-      <th>Descripcion</th>
+      <th>Unidades</th>
+      <th>RDA's</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -26,20 +26,15 @@
   <tbody>
     <% @programas.each do |programa| %>
       <tr>
-        <td><%= programa.carrera %></td>
         <td><%= programa.nombre %></td>
-        <td><%= programa.codigo %></td>
-        <td><%= programa.requisitos %></td>
-        <td><%= programa.dicta %></td>
-        <td><%= programa.ano_sem_vil %></td>
-        <td><%= programa.categoria %></td>
-        <td><%= programa.horas_presen %></td>
-        <td><%= programa.TEL %></td>
-        <td><%= programa.perfil_prof %></td>
         <td><%= programa.version %></td>
-        <td><%= programa.resolucion %></td>
-        <td><%= programa.autor_es %></td>
-        <td><%= programa.descripcion %></td>
+        <td>
+        <% @rdas = HadRda.where(programa_id:  programa.id) %>
+         <% @rdas.each do |rda| %>
+            <%= rda.resultados_de_aprendizaje_id %>
+         <%end%>
+
+        </td>
         <td><%= link_to 'Mostrar', programa %></td>
         <td><%= link_to 'Editar', edit_programa_path(programa) %></td>
         <td><%= link_to 'Eliminar', programa, method: :delete, data: { confirm: 'Está seguro que desea eliminar el programa indicado?' } %></td>
@@ -48,6 +43,10 @@
   </tbody>
 </table>
 
-<br>
+            </div>
+         </div>
+      </div>
+   </div>
+</div>
 
-<%= link_to 'New Programa', new_programa_path %>
+<%= link_to 'Agregar Programa', new_programa_path %>

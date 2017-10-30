@@ -1,4 +1,4 @@
-<%= form_for(planificacion) do |f| %>
+<%= form_for(planificacion) do |f| %> 
   <% if planificacion.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(planificacion.errors.count, "error") %> prohibited this planificacion from being saved:</h2>
@@ -28,8 +28,7 @@
 
   <div class="field">
     <%= f.label :programa_id %>
-    <%= f.select :programa_id, options_from_collection_for_select(Programa.all, :id, :nombre) %>
-
+    <%= f.collection_select :programa_id, Programa.all, :id, :nombre %>
   </div>
 
   <div class="actions">

@@ -1,5 +1,7 @@
-<h1>New Programa</h1>
+<h1>Agregar programa</h1>
 
 <%= render 'form', programa: @programa %>
 
-<%= link_to 'Back', programas_path %>
+<%= button_to "Nueva unidad", {:action => :new_unity }, { :method => :post, class: 'btn btn-primary btn-block active'}  %>
+
+<%= link_to 'Volver', programas_path %>
