@@ -2,10 +2,6 @@
 
 <h1> Programa: </h1>
 
-<p>
-  <strong>Carrera:</strong>
-  <%= @programa.carrera %>
-</p>
 
 <p>
   <strong>Nombre:</strong>
@@ -13,72 +9,11 @@
 </p>
 
 <p>
-  <strong>Codigo:</strong>
-  <%= @programa.codigo %>
-</p>
-
-<p>
-  <strong>Requisitos:</strong>
-  <%= @programa.requisitos %>
-</p>
-
-<p>
-  <strong>Dicta:</strong>
-  <%= @programa.dicta %>
-</p>
-
-<p>
-  <strong>Ano sem vil:</strong>
-  <%= @programa.ano_sem_vil %>
-</p>
-
-<p>
-  <strong>Categora:</strong>
-  <%= @programa.categoria %>
-</p>
-
-<p>
-  <strong>Horas presen:</strong>
-  <%= @programa.horas_presen %>
-</p>
-
-<p>
-  <strong>Tel:</strong>
-  <%= @programa.TEL %>
-</p>
-
-<p>
-  <strong>Perfil prof:</strong>
-  <%= @programa.perfil_prof %>
-</p>
-
-<p>
   <strong>Version:</strong>
   <%= @programa.version %>
 </p>
 
-<p>
-  <strong>Resolucion:</strong>
-  <%= @programa.resolucion %>
-</p>
 
-<p>
-  <strong>Autor es:</strong>
-  <%= @programa.autor_es %>
-</p>
-
-<p>
-  <strong>Descripcion:</strong>
-  <%= @programa.descripcion %>
-</p>
-
-<p>
-  <strong>RDA(S):</strong>
-  <% @programa.resultados_de_aprendizajes.each do |rda| %>
-    <%= rda.id %>
-  <%end%>
-  </div>
-</p>
 
 <%= link_to 'Editar', edit_programa_path(@programa) %> |
 <%= link_to 'Volver', programas_path %>

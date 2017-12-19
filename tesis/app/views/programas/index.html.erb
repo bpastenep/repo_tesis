@@ -29,11 +29,6 @@
         <td><%= programa.nombre %></td>
         <td><%= programa.version %></td>
         <td>
-        <% @rdas = HadRda.where(programa_id:  programa.id) %>
-         <% @rdas.each do |rda| %>
-            <%= rda.resultados_de_aprendizaje_id %>
-         <%end%>
-
         </td> 
         <td><%= link_to 'Mostrar', programa %></td>
         <td><%= link_to 'Editar', edit_programa_path(programa) %></td>

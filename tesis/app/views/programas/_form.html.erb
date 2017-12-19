@@ -21,9 +21,14 @@
     <%= f.label :version %>
     <%= f.text_field :version %>
   </div>
- 
+  <div class="field">
+    <% rdas = Rda.all %>
+    <% rdas.each do |rda| %>
+        <%= check_box_tag rda.id %> <%= rda.descripcion %>
+        <br>
+    <%end%>  
+  </div>
 
-</div>
   <div class="actions">
     <%= f.submit %>
   </div>

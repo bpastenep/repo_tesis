@@ -2,6 +2,7 @@
 
 <%= render 'form', programa: @programa %>
 
-<%= button_to "Nueva unidad", {:action => :new_unity }, { :method => :post, class: 'btn btn-primary btn-block active'}  %>
+<%= link_to 'Agregar RDA', new_rda_path, :class => "btn btn-info"%>
+<br>
 
-<%= link_to 'Volver', programas_path %>
+<%= link_to 'Volver', programas_path, :class => "btn btn-warning" %>

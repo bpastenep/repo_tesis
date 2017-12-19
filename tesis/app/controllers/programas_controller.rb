@@ -15,24 +15,17 @@ class ProgramasController < ApplicationController
   # GET /programas/new
   def new
     @programa = Programa.new
-    @unidades = Unity.all
-  end
-
-  # GET /programas/new_unity
-  def new_unity
-    @unidades = Unity.all
-    @rda = ResultadosDeAprendizaje.all
   end
 
 #Funcion Insertar una nueva unidad  (Unity)
-  def create_unity 
-    nombre = params[:nombre]
-    descripcion = params[:descripcion]
-    @id_rda = params[:rdas]
-    insercion1 = Unity.create(descripcion: descripcion, nombre: nombre, id_rda: @id_rda.join(" "))
-    puts insercion1 
-    redirect_to action: 'new'
-  end
+#  def create_unity 
+#    nombre = params[:nombre]
+#    descripcion = params[:descripcion]
+#    @id_rda = params[:rdas]
+#    insercion1 = Unity.create(descripcion: descripcion, nombre: nombre, id_rda: @id_rda.join(" "))
+#    puts insercion1 
+#    redirect_to action: 'new'
+#  end
     #@unidad = Unity.new(params[:descripcion],)
   #Validaciones respecto a los parametros de unidad 
 #    if params[:descripcion].nil?
@@ -49,14 +42,13 @@ class ProgramasController < ApplicationController
 
   # GET /programas/1/edit
   def edit
-    @rda = ResultadosDeAprendizaje.all
+#    @rda = ResultadosDeAprendizaje.all
   end
 
   # POST /programas
   # POST /programas.json
   def create
     @programa = Programa.new(programa_params)
-    @programa.rda = params[:rdas]
     respond_to do |format|
       if @programa.save
         format.html { redirect_to @programa, notice: 'Programa fue existosamente creado.' }
@@ -85,8 +77,8 @@ class ProgramasController < ApplicationController
   # DELETE /programas/1
   # DELETE /programas/1.json
   def destroy
-    HadRda.destroy_all(programa_id: params[:id])
     @programa.destroy
+    puts "pase el destroy"
     respond_to do |format|
       format.html { redirect_to programas_url, notice: 'Programa fue exitosamente eliminado' }
       format.json { head :no_content }
