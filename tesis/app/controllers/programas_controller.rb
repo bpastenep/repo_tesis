@@ -24,17 +24,15 @@ class ProgramasController < ApplicationController
     @rda = ResultadosDeAprendizaje.all
   end
 
-  #Funcion Insertar una nueva unidad  (Unity)
-
-  def create_unity
-    puts  params
+#Funcion Insertar una nueva unidad  (Unity)
+  def create_unity 
     nombre = params[:nombre]
     descripcion = params[:descripcion]
     @id_rda = params[:rdas]
     insercion1 = Unity.create(descripcion: descripcion, nombre: nombre, id_rda: @id_rda.join(" "))
     puts insercion1 
     redirect_to action: 'new'
-
+  end
     #@unidad = Unity.new(params[:descripcion],)
   #Validaciones respecto a los parametros de unidad 
 #    if params[:descripcion].nil?
@@ -46,8 +44,8 @@ class ProgramasController < ApplicationController
 #      puts "Entre a el nombre vacio "
 #      flash[:notice] = "Debe ingresar un nombre"
 #      redirect_to action: :new_unity
-  #  end
-  end
+#    end
+  
 
   # GET /programas/1/edit
   def edit
@@ -104,5 +102,6 @@ class ProgramasController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def programa_params
       params.require(:programa).permit(:nombre,:version)
-    end
+    end 
 end
+

@@ -25,7 +25,6 @@ class PlanificacionsController < ApplicationController
   # POST /planificacions.json
   def create
     @planificacion = Planificacion.new(planificacion_params)
-
     respond_to do |format|
       if @planificacion.save
         format.html { redirect_to @planificacion, notice: 'La planificacion fue creada con éxito' }
