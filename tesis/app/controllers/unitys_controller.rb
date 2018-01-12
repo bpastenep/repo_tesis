@@ -1,0 +1,2 @@
+class UnitysController < ApplicationController
+end

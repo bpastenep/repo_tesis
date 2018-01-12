@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class HadRdaTest < ActiveSupport::TestCase
+class EvaluacionTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end
