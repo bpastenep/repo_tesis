@@ -15,7 +15,7 @@ class ProgramasController < ApplicationController
   # GET /programas/new
   def new
     @programa = Programa.new
-    @rda = Rda.new
+    @rda = RdaGeneral.new
     @programas = Programa.all
   end
 
@@ -50,11 +50,16 @@ class ProgramasController < ApplicationController
   # POST /programas
   # POST /programas.json
   def create
+    puts "AAAAAAAAAAAAAAAAAAHHHHHHHHHHHHHHHHHHHHHHHH"
+    puts params[:descripcionNewRda]
     @programa = Programa.new(programa_params)
     respond_to do |format|
       if @programa.save
         format.html { redirect_to @programa, notice: 'Programa fue existosamente creado.' }
         format.json { render :show, status: :created, location: @programa }
+        @rdaGeneral = RdaGeneral.new
+        @rdaGeneral.descripcion = params[:descripcionNewRda]
+        @rdaGeneral.programas_id = @programa.id
       else
         format.html { render :new }
         format.json { render json: @programa.errors, status: :unprocessable_entity }
@@ -95,7 +100,7 @@ class ProgramasController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def programa_params
-      params.require(:programa).permit(:nombre,:version)
+      params.require(:programa).permit(:nombre,:version,:descripcion)
     end 
 end
 

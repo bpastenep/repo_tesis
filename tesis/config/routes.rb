@@ -3,6 +3,7 @@ Rails.application.routes.draw do
 #  resources :pregunta
   resources :programas
   resources :propositos
+  resources :rda_generals
  
 
   
