@@ -1,0 +1,18 @@
+<%# if !notice.nil? %>
+	<div class="alert alert-success" id="notice"><%= notice %> </div>
+<%#end%>
+
+<h1> Resultado de aprendizaje </h1>
+
+<p>
+  <strong>Descripcion:</strong>
+  <%= @rda.descripcion %>
+</p>
+
+<p>
+  <strong>Programa:</strong>
+  <%= @rda.programa_id %>
+</p>
+
+<%= link_to 'Edit', edit_rda_path(@rda) %> |
+<%= link_to 'Back', rdas_path %>

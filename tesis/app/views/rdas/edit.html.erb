@@ -1,0 +1,29 @@
+<h3>Editando resultados de aprendizaje</h3>
+
+<%= form_for @rda, :url => {:action => "update"} do |f| %>
+
+  <div class="form-group">
+    <div class="font-italic"> Descripción </div>
+    <%= f.text_area :descripcion, :class => "form-control" %>
+  </div>
+
+  <!-- Falta agregar que cuando venga de editar se carga el select en el programa ya seleccionado -->
+  
+    <div class="field">
+    
+    <%= f.select(:programa_id) do %>
+      <% @programas.each do |c| %>
+        <%= content_tag(:option, c.nombre, value: c.id) %>
+      <% end %>
+    <% end %>
+  </div>
+
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+
+<%= link_to 'Show', @rda %> 
+<%= link_to 'Back', rdas_path %>
+

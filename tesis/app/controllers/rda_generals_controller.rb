@@ -1,0 +1,2 @@
+class RdaGeneralsController < ApplicationController
+end
