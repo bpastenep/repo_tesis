@@ -15,6 +15,8 @@ class ProgramasController < ApplicationController
   # GET /programas/new
   def new
     @programa = Programa.new
+    @rda = Rda.new
+    @programas = Programa.all
   end
 
 #Funcion Insertar una nueva unidad  (Unity)

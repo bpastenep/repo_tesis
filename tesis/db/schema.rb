@@ -10,17 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171219201247) do
+ActiveRecord::Schema.define(version: 20180111235427) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-
-  create_table "Propositos_Rdas", id: false, force: :cascade do |t|
-    t.integer "proposito_id", null: false
-    t.integer "rda_id",       null: false
-    t.index ["proposito_id", "rda_id"], name: "index_Propositos_Rdas_on_proposito_id_and_rda_id", using: :btree
-    t.index ["rda_id", "proposito_id"], name: "index_Propositos_Rdas_on_rda_id_and_proposito_id", using: :btree
-  end
 
   create_table "programas", force: :cascade do |t|
     t.string   "nombre"
@@ -35,22 +28,54 @@ ActiveRecord::Schema.define(version: 20171219201247) do
     t.datetime "updated_at",  null: false
   end
 
-  create_table "rdas", force: :cascade do |t|
+  create_table "propositos_rdas", force: :cascade do |t|
+    t.integer  "rdas_id"
+    t.integer  "propositos_id"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.index ["propositos_id"], name: "index_propositos_rdas_on_propositos_id", using: :btree
+    t.index ["rdas_id"], name: "index_propositos_rdas_on_rdas_id", using: :btree
+  end
+
+  create_table "rda_especificos", force: :cascade do |t|
     t.text     "descripcion"
-    t.integer  "programa_id"
+    t.string   "resumen"
+    t.integer  "rdas_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
-    t.index ["programa_id"], name: "index_rdas_on_programa_id", using: :btree
+    t.index ["rdas_id"], name: "index_rda_especificos_on_rdas_id", using: :btree
+  end
+
+  create_table "rda_generals", force: :cascade do |t|
+    t.text     "descripcion"
+    t.integer  "programas_id"
+    t.string   "nombre"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.index ["programas_id"], name: "index_rda_generals_on_programas_id", using: :btree
+  end
+
+  create_table "rdas", force: :cascade do |t|
+    t.text     "descripcion"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.string   "nombre"
   end
 
   create_table "unities", force: :cascade do |t|
     t.text     "descripcion"
-    t.string   "id_rda"
     t.string   "nombre"
-    t.integer  "id_programa"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.integer  "rda_generals_id"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+    t.integer  "rdas_id"
+    t.index ["rda_generals_id"], name: "index_unities_on_rda_generals_id", using: :btree
+    t.index ["rdas_id"], name: "index_unities_on_rdas_id", using: :btree
   end
 
-  add_foreign_key "rdas", "programas"
+  add_foreign_key "propositos_rdas", "propositos", column: "propositos_id"
+  add_foreign_key "propositos_rdas", "rdas", column: "rdas_id"
+  add_foreign_key "rda_especificos", "rdas", column: "rdas_id"
+  add_foreign_key "unities", "rda_generals", column: "rda_generals_id"
+  add_foreign_key "unities", "rdas", column: "rdas_id"
 end

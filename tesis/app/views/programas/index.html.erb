@@ -13,30 +13,38 @@
             <div class="row">
                <div class="col-sm-12 my-auto">
                   <table class="table" >
-  <thead>
-    <tr>
-      <th>Nombre</th>
-      <th>Version</th>
-      <th>Unidades</th>
-      <th>RDA's</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+                    <thead>
+                      <tr>
+                        <th>Nombre</th>
+                        <th>Version</th>
+                        <th>RDA general</th>
+                        <th colspan="3"></th>
+                      </tr>
+                    </thead>
 
-  <tbody>
-    <% @programas.each do |programa| %>
-      <tr>
-        <td><%= programa.nombre %></td>
-        <td><%= programa.version %></td>
-        <td>
-        </td> 
-        <td><%= link_to 'Mostrar', programa %></td>
-        <td><%= link_to 'Editar', edit_programa_path(programa) %></td>
-        <td><%= link_to 'Eliminar', programa, method: :delete, data: { confirm: 'Está seguro que desea eliminar el programa indicado?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+                    <tbody>
+                      <% @programas.each do |programa| %>
+                        <tr>
+                          <td><%= programa.nombre %></td>
+                          <td><%= programa.version %></td>
+                          <td> 
+                            <% rdas = RdaGeneral.where(programas_id: programa.id).take(10) %>
+                            <% if rdas.nil? %>
+                              No posee rda asociados
+                            <% else %>
+                              <% rdas.each do |rda| %>
+                                <%= rda.id %>
+                              <%end%>
+                            <%end%>
+
+                          </td> 
+                          <td><%= link_to 'Mostrar', programa %></td>
+                          <td><%= link_to 'Editar', edit_programa_path(programa) %></td>
+                          <td><%= link_to 'Eliminar', programa, method: :delete, data: { confirm: 'Está seguro que desea eliminar el programa indicado?' } %></td>
+                        </tr>
+                      <% end %>
+                    </tbody>
+                  </table>
 
             </div>
          </div>

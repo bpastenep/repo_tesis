@@ -1,8 +1,65 @@
+<script>
+$('document').ready(function(){
+	$('#myModal').on('shown.bs.modal', function () {
+  	$('#myInput').focus()
+})
+});
+</script>
+
+
+
 <h1>Agregar programa</h1>
 
 <%= render 'form', programa: @programa %>
 
-<%= link_to 'Agregar RDA', new_rda_path, :class => "btn btn-info"%>
-<br>
+<button type="button" class="btn btn-info" data-toggle="modal" data-target="#modal-new-rda" >
+Crear rda
+</button>
+
+
+<%= link_to 'Crear RDA', new_rda_path , :class => "btn btn-info", 'data-toggle' => 'modal', 'data-target' => '#modal-new-rda' %>
 
 <%= link_to 'Volver', programas_path, :class => "btn btn-warning" %>
+
+<!-- Modal para crear un Rda -->
+
+<div class="modal fade" id="modal-new-rda">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+      <%# render :file => "rdas/new.html.erb" %> 
+      <%= form_for(@rda) do |f| %>
+       <div class="field">
+        <%= f.label :descripcion %>
+        <%= f.text_area :descripcion %>
+      </div>
+  <!-- Falta agregar que cuando venga de editar se carga el select en el programa ya seleccionado -->
+  
+    <div class="field">
+    <% puts params %>
+    <%= f.select(:programa_id) do %>
+      <% @programas.each do |c| %>
+        <%= content_tag(:option, c.nombre, value: c.id) %>
+      <% end %>
+    <% end %>
+  </div>
+
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary">Save changes</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>

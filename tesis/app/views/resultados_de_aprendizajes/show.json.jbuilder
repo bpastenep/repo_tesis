@@ -1,1 +1,0 @@
-json.partial! "resultados_de_aprendizajes/resultados_de_aprendizaje", resultados_de_aprendizaje: @resultados_de_aprendizaje
